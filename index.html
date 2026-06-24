@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14213d">
+  <meta name="description" content="Apresentações do 9º ano para a Festa da Família.">
+  <title>9º Ano — Festa da Família</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #637083;
+      --paper: #fffdf8;
+      --accent: #ff6b4a;
+      --accent-2: #ffb703;
+      --line: rgba(20, 33, 61, .1);
+      --shadow: 0 18px 50px rgba(20, 33, 61, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 7% 2%, rgba(255, 183, 3, .18), transparent 25rem),
+        radial-gradient(circle at 100% 22%, rgba(76, 201, 240, .14), transparent 28rem),
+        #f7f6f2;
+      font-family: Inter, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .hero { padding: 48px 0 30px; text-align: center; }
+    .school-logo {
+      display: block;
+      width: min(330px, 82vw);
+      height: auto;
+      margin: 0 auto 24px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(20, 33, 61, .08);
+    }
+
+    h1 { margin: 0; font-size: clamp(2.2rem, 9vw, 5.2rem); letter-spacing: -.055em; line-height: .98; }
+    .hero p { width: min(620px, 100%); margin: 18px auto 0; color: var(--muted); font-size: clamp(1rem, 2.6vw, 1.18rem); }
+
+    .video-frame {
+      position: relative;
+      overflow: hidden;
+      border: 8px solid #fff;
+      border-radius: 26px;
+      background: #0c1223;
+      box-shadow: var(--shadow);
+    }
+    video { display: block; width: 100%; max-height: 72vh; aspect-ratio: 16 / 9; object-fit: contain; background: #0c1223; }
+
+    .explore { padding: 50px 0 64px; }
+    .section-head { text-align: center; }
+    .section-head h2 { margin: 0; font-size: clamp(1.75rem, 6vw, 2.8rem); letter-spacing: -.04em; }
+    .section-head p { margin: 8px 0 0; color: var(--muted); }
+
+    .classes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 26px auto 34px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 10px 30px rgba(20,33,61,.06);
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+    }
+    .class-btn {
+      min-height: 52px;
+      border: 0;
+      border-radius: 15px;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-weight: 850;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .class-btn:hover { background: rgba(20,33,61,.06); }
+    .class-btn:active { transform: scale(.97); }
+    .class-btn.active { color: #fff; background: var(--ink); box-shadow: 0 8px 22px rgba(20,33,61,.25); }
+    .class-btn:focus-visible, .card:focus-visible { outline: 4px solid rgba(255,107,74,.35); outline-offset: 3px; }
+
+    .class-title { display: flex; align-items: end; justify-content: space-between; gap: 14px; margin: 0 0 18px; }
+    .class-title h3 { margin: 0; font-size: clamp(1.45rem, 5vw, 2rem); }
+    .counter { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      --card-accent: #ff6b4a;
+      position: relative;
+      display: flex;
+      min-height: 280px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      color: inherit;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 30px rgba(20,33,61,.07);
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card::before { content: ""; position: absolute; inset: 0 0 auto; height: 6px; background: var(--card-accent); }
+    a.card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--card-accent) 45%, transparent); box-shadow: 0 20px 45px rgba(20,33,61,.14); }
+    .card-inner { display: flex; flex-direction: column; width: 100%; padding: 24px; }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 68px;
+      height: 68px;
+      margin-bottom: 18px;
+      border-radius: 20px;
+      background: color-mix(in srgb, var(--card-accent) 16%, white);
+      font-size: 2.15rem;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--card-accent) 20%, transparent);
+    }
+    .big-theme { margin: 0 0 6px; color: var(--card-accent); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .theme { margin: 0; font-size: 1.35rem; line-height: 1.15; letter-spacing: -.025em; }
+    .students { margin: 13px 0 0; color: var(--muted); font-size: .92rem; }
+    .students strong { color: var(--ink); }
+    .card-action { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 20px; font-size: .84rem; font-weight: 800; }
+    .card-action .arrow { font-size: 1.2rem; transition: transform .2s ease; }
+    a.card:hover .arrow { transform: translate(3px, -3px); }
+    .card.soon { cursor: default; background: rgba(255,255,255,.65); }
+    .card.soon .card-action { color: var(--muted); }
+
+    .empty { padding: 38px; border: 1px dashed var(--line); border-radius: 24px; text-align: center; color: var(--muted); }
+    footer { padding: 0 0 max(34px, env(safe-area-inset-bottom)); text-align: center; color: var(--muted); font-size: .86rem; }
+
+    @media (max-width: 820px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 22px, 1120px); }
+      .hero { padding-top: 30px; }
+      .video-frame { border-width: 5px; border-radius: 18px; }
+      .explore { padding-top: 38px; }
+      .classes { gap: 5px; top: 6px; border-radius: 17px; }
+      .class-btn { min-height: 48px; border-radius: 12px; font-size: .92rem; }
+      .grid { grid-template-columns: 1fr; gap: 13px; }
+      .card { min-height: 246px; border-radius: 21px; }
+      .card-inner { padding: 21px; }
+      .class-title { align-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header class="hero shell">
+    <img class="school-logo" src="logo.png" alt="Instituto Educacional Crescer">
+    <h1>Grandes ideias<br>do 9º ano</h1>
+    <p>Conheça os temas, os estudantes e as apresentações preparadas por cada turma.</p>
+  </header>
+
+  <main>
+    <section class="shell" aria-label="Vídeo de apresentação">
+      <div class="video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="apresentacao.mp4" type="video/mp4">
+          Seu navegador não consegue reproduzir este vídeo.
+        </video>
+      </div>
+    </section>
+
+    <section class="explore shell" id="apresentacoes">
+      <div class="section-head">
+        <h2>Escolha uma turma</h2>
+        <p>Depois, toque em um tema para abrir a apresentação.</p>
+      </div>
+
+      <nav class="classes" aria-label="Turmas do 9º ano" id="classButtons"></nav>
+      <div class="class-title">
+        <h3 id="classTitle"></h3>
+        <span class="counter" id="counter"></span>
+      </div>
+      <div class="grid" id="cards" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="shell">Feito para celebrar a criatividade dos nossos estudantes ✦</footer>
+
+  <script>
+    const turmas = {
+      "9ºA": [
+        ["🚀", "Foguetes", "Grandes Invenções", ["Caique", "Victor", "Stephano"], "https://canva.link/abw1ud4b5q0ux7n"],
+        ["🚢", "Canal do Panamá", "Grandes Invenções", ["Felipe Bicego", "Rafael de Barros", "Matheus Paranhos", "Davi Aires"], "https://canva.link/ee60bh5ltio5riw"],
+        ["⚡", "Nikilas Tesla", "Grandes Pessoas e Grandes Invenções", ["Bruno", "Alvora", "Pablo"], "https://canva.link/nsle7hdbv7zab26"],
+        ["🏰", "Walt Disney", "Grandes Pessoas", ["Amanda", "Heloisa"], ""],
+        ["📷", "Fotográfia", "Grandes Invensões", ["Isabelle", "Larissa Brito", "Júlia"], "https://canva.link/qu4qw6l7t1kh98s"],
+        ["⚽", "Copa do Mundo", "Grandes Eventos Históricos", ["Matheus Vilela", "Filipe", "Leonardo", "Rafael Pessoa"], ""],
+        ["💊", "Remédio", "Fatos Históricos", ["Rafael Pachedo", "Miguel M.", "Kaio"], ""],
+        ["🕊️", "Nelson Mandela", "Grandes Pessoas", ["Nicoly", "Luisa", "Gabriela"], "https://canva.link/sfetui887cdihrv"],
+        ["📚", "Malala", "Grandes Pessoas", ["Isadora", "Carol", "Victoria"], ""],
+        ["💡", "Gabriel Liguori", "Grandes Pessoas e Grande Invenções", ["Isabela Akemi", "Maria Clara", "Pedro"], "https://canva.link/961bcowm418gpff"],
+        ["🩻", "Raio - X", "Grandes inveções e Fatos Históricos", ["Ana Clara", "Sophia", "Larissa O.", "Manuela Xavier"], ""]
+      ],
+      "9ºB": [
+        ["🏎️", "Camaro 1979", "Grandes Invenções e Fatos Históricos", ["Manuela Pet.", "Brenda", "Sophia Viola", "Katlhin"], "https://canva.link/346bng7gxk45yq8"],
+        ["💻", "Alan Turin", "Grande Pessoa", ["Victor Bento", "João", "Gabriel Marion", "Lucas Brabo"], "https://canva.link/w7bky3u1zrpepjr"],
+        ["🩻", "Raio - X", "Grande invenções", ["Ana Vitória", "Leticia", "Mirella"], ""],
+        ["🖥️", "História e inovação do Computador", "Grandes invenções", ["Arthur", "Matheus (Matiusi)", "Vitor Borges", "Cauã"], "https://docs.google.com/presentation/d/1y3b6itQEUu3maihpDRPW-ejFC4hC-j9M/edit?usp=sharing&ouid=104702108848287698085&rtpof=true&sd=true"],
+        ["🎸", "História do Rock", "Fatos Históricos", ["Murilo", "Samuel", "Marcos", "Filipe"], "https://www.canva.com/design/DAHMAq_2YQY/CoXCceh88SfACksPxFZbqg/watch"],
+        ["🌿", "Biomimética", "Grandes Invenções", ["Isabelly", "Manuela Rocha", "Mariana"], "https://www.canva.com/design/DAHMA37SdRc/Eh4mVg67y8cHHdRBbYbvRA/view?utm_content=DAHMA37SdRc&utm_campaign=designshare&utm_medium=link&utm_source=viewer"],
+        ["🩸", "Banco de Sangue", "Grandes Invenções", ["Giovanni", "Gabriel Texeira"], "https://canva.link/f2xjqj5cythw76c"],
+        ["🎨", "Van Gogh", "Grandes Pessoal", ["Jessé", "Thomás"], ""],
+        ["👩‍⚕️", "Leite das Neves", "Fatos Históricos", ["Anna", "Alice", "Sophia Lopes"], "https://canva.link/jhgs2470icliucl"]
+      ],
+      "9ºC": [
+        ["💉", "Vacina", "Grandes Invenções", ["Valentina Mota"], "https://canva.link/iekrqvd0pxrpho6"],
+        ["🕊️", "Mahatma Gandhi", "Grandes Pessoas e Grandes Eventos", ["Rogério"], ""],
+        ["⚛️", "Marie Curie", "Grandes Pessoas e Grandes Invenções", ["Matheus Missio", "Geovana Santos", "Gabriela Abud", "Nathalia", "Giovana Moreira"], "https://canva.link/7kbegun6lyptetk"],
+        ["💇", "Chapinha", "Grandes Acontecimentos", ["Anny", "Ana Flávia", "Helena"], ""],
+        ["⛵", "Pedro Alvares Cabral", "Acontecimentos Históricos e Fatos", ["Izac", "Fabricio", "Guilherme"], ""],
+        ["🎨", "Leonardo D'Vinci", "Grandes Inventores", ["Larissa", "Lorena", "Paulo", "Laura"], ""],
+        ["📍", "GPS", "Grandes Invenções", ["Lais", "Ana Clara", "Sophia Pereira", "Ana Laura", "Leticia"], "https://canva.link/x7nc8g7d0geob7b"],
+        ["🎨", "Van Gogui", "Grandes Pessoas", ["Leonardo", "Valentina F", "Felipe F"], "https://www.canva.com/design/DAHL_dTIic4/OiQe0MV1OXltyIfLMy0OVQ/watch"],
+        ["✍️", "Escritor hiriko araki", "Grandes pessoas", ["Davi Ramos", "Victor Miguel", "Rafael", "Kauã"], "https://canva.link/scvq8ee9bc6lh9w"],
+        ["💡", "Thomas Edson", "Grandes pessoas", ["Fellipe A.", "Sophia Riva", "Miguel", "Lucas"], ""],
+        ["🛞", "Invensão da Roda", "Grandes Invenções", ["Theo", "Enrico", "Thiago"], "https://canva.link/hlg9ovear8h9m4p"],
+        ["📚", "Malala", "Grandes Pessoas", ["Thayanne", "Giovana Medeiros"], "https://canva.link/33c7tcsrils2txl"]
+      ],
+      "9ºD": [
+        ["📖", "Paulo Freire", "Grandes Pessoas", ["Danila", "Giovana"], "https://canva.link/ts26kfdesoty09z"],
+        ["🏭", "Revoluções Industriais", "Grandes Acontecimentos Históricos", ["Arthur Monteiro"], ""],
+        ["✈️", "Avião", "Grandes Invenções", ["Felipe Santana"], "https://canva.link/sshusvwvd2pn1n5"],
+        ["📡", "Criação do Radar", "Grandes Invenções", ["Eva", "Julia", "Beatriz"], ""],
+        ["📶", "Hedy Lamarr", "Grandes Pessoas", ["Julia Dantas", "Manuela Nicolau", "Emanuelle", "Manuela Maltarolo"], "https://canva.link/u6u4why7y905y6s"],
+        ["🚗", "Primeiro Automovel", "Grandes Invenções", ["Atur Gante", "Julio", "Rafael", "Breno"], ""],
+        ["🎬", "Lotte Reiniger", "Grandes Pessoas", ["Ana Clara", "Manuela Lopes"], "https://canva.link/0trqccq94ae6n3m"],
+        ["🔩", "Prego e Parafuso", "Grandes Invenções", ["Samuel", "Alex", "Davi", "Pedro"], "https://canva.link/05a9z1yl5o21bqn"],
+        ["👩‍🔬", "Grandes Mulheres e suas invenções", "Grandes pessoas", ["Bruna", "Maria Luiza", "Maria Clara", "Manuela Bonfim"], "https://canva.link/da45owi5rrweeg7"],
+        ["✊", "Martin Lutherking", "Grandes Pessoas", ["Enzo", "Felipe", "Manuela Chaves", "Maria Eduarda"], "https://canva.link/xg2x4by11m2ytue"],
+        ["🧱", "Grande Muralha da China", "Grandes Acontecimentos Históricos", ["Victor", "Miguel", "João", "Igor"], "https://canva.link/420eqgglecn5qps"]
+      ]
+    };
+
+    const palette = ["#f05d3f", "#0077b6", "#7b2cbf", "#2d6a4f", "#d97706", "#c9184a"];
+    const buttons = document.querySelector("#classButtons");
+    const cards = document.querySelector("#cards");
+    const title = document.querySelector("#classTitle");
+    const counter = document.querySelector("#counter");
+
+    function renderClass(name, moveFocus = false) {
+      const items = turmas[name] || [];
+      document.querySelectorAll(".class-btn").forEach(btn => {
+        const selected = btn.dataset.class === name;
+        btn.classList.toggle("active", selected);
+        btn.setAttribute("aria-selected", selected);
+        if (selected && moveFocus) btn.focus({ preventScroll: true });
+      });
+      title.textContent = `Temas do ${name}`;
+      counter.textContent = `${items.length} ${items.length === 1 ? "tema" : "temas"}`;
+      cards.innerHTML = items.map(([icon, theme, bigTheme, students, link], i) => {
+        const tag = link ? "a" : "article";
+        const attrs = link ? `href="${link}" target="_blank" rel="noopener noreferrer" aria-label="Abrir apresentação: ${theme}"` : `aria-label="${theme}: apresentação em breve"`;
+        return `<${tag} class="card ${link ? "" : "soon"}" ${attrs} style="--card-accent:${palette[i % palette.length]}">
+          <div class="card-inner">
+            <span class="icon" aria-hidden="true">${icon}</span>
+            <p class="big-theme">${bigTheme}</p>
+            <h4 class="theme">${theme}</h4>
+            <p class="students"><strong>Participantes:</strong> ${students.join(", ")}</p>
+            <div class="card-action"><span>${link ? "Abrir apresentação" : "Apresentação em breve"}</span>${link ? '<span class="arrow" aria-hidden="true">↗</span>' : ""}</div>
+          </div>
+        </${tag}>`;
+      }).join("");
+      history.replaceState(null, "", `#${encodeURIComponent(name)}`);
+    }
+
+    Object.keys(turmas).forEach(name => {
+      const button = document.createElement("button");
+      button.className = "class-btn";
+      button.type = "button";
+      button.role = "tab";
+      button.dataset.class = name;
+      button.textContent = name;
+      button.addEventListener("click", () => renderClass(name));
+      buttons.appendChild(button);
+    });
+
+    const requested = decodeURIComponent(location.hash.slice(1));
+    renderClass(turmas[requested] ? requested : "9ºA");
+  </script>
+</body>
+</html>
