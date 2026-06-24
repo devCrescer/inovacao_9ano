@@ -53,8 +53,9 @@
       background: #0c1223;
       box-shadow: var(--shadow);
     }
-    video, .video-frame iframe { display: block; width: 100%; max-height: 72vh; aspect-ratio: 16 / 9; border: 0; background: #0c1223; }
-    video { object-fit: contain; }
+    video, .video-frame iframe { display: block; width: 100%; max-height: 72vh; border: 0; background: #0c1223; }
+    video { aspect-ratio: 16 / 9; object-fit: contain; }
+    .video-frame iframe { aspect-ratio: 4 / 3; }
 
     .explore { padding: 50px 0 64px; }
     .section-head { text-align: center; }
@@ -165,12 +166,10 @@
   <main>
     <section class="shell" aria-label="Vídeo de apresentação">
       <div class="video-frame">
-        <iframe
-          src="https://drive.google.com/file/d/1e7QmXdAwfdhNs2W4hCli6VWdI1JwvkVK/preview"
-          title="Vídeo de apresentação"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-          loading="eager"></iframe>
+        <video id="introVideo" controls autoplay muted playsinline preload="auto">
+          <source src="apresentacao-web.mp4" type="video/mp4">
+          Seu navegador não consegue reproduzir este vídeo.
+        </video>
       </div>
     </section>
 
@@ -291,6 +290,10 @@
 
     const requested = decodeURIComponent(location.hash.slice(1));
     renderClass(turmas[requested] ? requested : "9ºA");
+
+    const introVideo = document.querySelector("#introVideo");
+    introVideo.play().catch(() => {});
+
   </script>
 </body>
 </html>
